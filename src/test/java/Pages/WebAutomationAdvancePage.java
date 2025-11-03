@@ -61,8 +61,18 @@ public class WebAutomationAdvancePage {
         deviceColour_id.sendKeys(deviceColour);
     }
 
-    public void clickDeviceQuantity(String deviceQuantity) {
-        deviceQuantity_id.sendKeys(deviceQuantity);
+    public void clickDeviceQuantity(int deviceQuantity)  throws InterruptedException{
+        deviceQuantity_id.clear();
+
+       /* if (deviceQuantity <= 10) {
+            String num = String.valueOf(deviceQuantity);
+            deviceQuantity_id.sendKeys(num);
+        }*/
+        Thread.sleep(4000);
+        if (deviceQuantity > 0 && deviceQuantity <= 10) {
+            String num = String.valueOf(deviceQuantity);
+            deviceQuantity_id.sendKeys(num);
+        }
     }
 
     public void enterDeliveryAddress(String deviceAddress) {

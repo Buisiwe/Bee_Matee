@@ -78,8 +78,8 @@ public class BusiTest extends Base {
 
     @Test(dependsOnMethods = "selectDeviceColourTest")
     public void selectDeviceQuantityTest() throws InterruptedException {
-        webAutomationAdvancePage.clickDeviceQuantity("2");
-        Thread.sleep(4000);
+        webAutomationAdvancePage.clickDeviceQuantity(2);
+
     }
 
     @Test(dependsOnMethods = "selectDeviceQuantityTest")
