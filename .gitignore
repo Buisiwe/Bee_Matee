@@ -14,7 +14,7 @@ target/
 *.ipr
 .idea/
 .mvn/
-
+Reports/
 ### Eclipse ###
 .apt_generated
 .classpath

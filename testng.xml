@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-<!--    <listeners>-->
-<!--        <listener class-name="ExtentReports.Listener"></listener>-->
-<!--    </listeners>-->
-    <test name="Busi Test">
+    <listeners>
+        <listener class-name="ExtentsReports.Listener"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="BusiTest">
         <classes>
             <class name="TestData.BusiTest"></class>
         </classes>
