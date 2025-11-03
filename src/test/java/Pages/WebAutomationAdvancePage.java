@@ -21,19 +21,55 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "brand")
     WebElement tabletBrand_id;
 
-    public WebAutomationAdvancePage(WebDriver driver){
-        this.driver=driver;
+    @FindBy(id = "storage-64GB")
+    WebElement deviceStorage_id;
+
+    @FindBy(id = "color")
+    WebElement deviceColour_id;
+
+    @FindBy(id = "quantity")
+    WebElement deviceQuantity_id;
+
+    @FindBy(id = "address")
+    WebElement deliveryAddress_id;
+
+    @FindBy(id = "inventory-next-btn")
+    WebElement nextButton_id;
+
+    public WebAutomationAdvancePage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public void verifyInventoryHeaderIsDisplayed(){
+    public void verifyInventoryHeaderIsDisplayed() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryHeader_id));
         inventoryHeader_id.isDisplayed();
     }
-    public void selectDeviceType(String deviceType){
+
+    public void selectDeviceType(String deviceType) {
         deviceTypeDropDown_id.sendKeys(deviceType);
     }
 
-    public void selectTabletBrand(String deviceBrand){
+    public void selectTabletBrand(String deviceBrand) {
         tabletBrand_id.sendKeys(deviceBrand);
+    }
+
+    public void clickDeviceStorage() {
+        deviceStorage_id.click();
+    }
+
+    public void clickDeviceColour(String deviceColour) {
+        deviceColour_id.sendKeys(deviceColour);
+    }
+
+    public void clickDeviceQuantity(String deviceQuantity) {
+        deviceQuantity_id.sendKeys(deviceQuantity);
+    }
+
+    public void enterDeliveryAddress(String deviceAddress) {
+        deliveryAddress_id.sendKeys(deviceAddress);
+    }
+
+    public void clickNextButtonSubmitForm() {
+        nextButton_id.click();
     }
 }

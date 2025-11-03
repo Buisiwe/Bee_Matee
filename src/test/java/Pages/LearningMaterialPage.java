@@ -16,16 +16,9 @@ public class LearningMaterialPage {
     @FindBy(id = "tab-btn-web")
     WebElement WebAutomationAdvanceTab_id;
 
-    public LearningMaterialPage(WebDriver driver) {
-        this.driver = driver;
-    }
+    public LearningMaterialPage(WebDriver driver) {this.driver = driver;}
 
-    public void verifyHeading(){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(welcomeHeading_id));
-        welcomeHeading_id.isDisplayed();}
+    public void verifyHeading(){new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(welcomeHeading_id));welcomeHeading_id.isDisplayed();}
 
-    public void clickWebAutomationAdvanceTab(){
-
-        WebAutomationAdvanceTab_id.click();
-    }
+    public void clickWebAutomationAdvanceTab(){WebAutomationAdvanceTab_id.click();}
 }

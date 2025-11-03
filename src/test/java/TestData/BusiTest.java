@@ -10,17 +10,19 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-public class BusiTest extends  Base {
-    @Test public void verifyHomePageIsDisplayedTests(){
+public class BusiTest extends Base {
+    @Test
+    public void verifyHomePageIsDisplayedTests() {
         homePage.VerifyHomePageDisplay();
     }
+
     @Test(dependsOnMethods = "verifyHomePageIsDisplayedTests")
     public void clickLearningMaterialTests() {
         homePage.learningMaterial();
     }
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
-    public void enterLoginEmail(){
+    public void enterLoginEmail() {
         loginPage.enterLoginEmail("Busi27@gmail.com");
     }
 
@@ -46,7 +48,7 @@ public class BusiTest extends  Base {
     }
 
     @Test(dependsOnMethods = "clickWebAutomationAdvanceTab")
-    public void verifyWebAutomationAdvancePageIsDisplayedTest(){
+    public void verifyWebAutomationAdvancePageIsDisplayedTest() {
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
     }
 
@@ -61,8 +63,38 @@ public class BusiTest extends  Base {
         webAutomationAdvancePage.selectTabletBrand("Samsung");
         Thread.sleep(4000);
     }
+
+    @Test(dependsOnMethods = "selectDeviceBrandTest")
+    public void clickDeviceStorageTest() throws InterruptedException {
+        webAutomationAdvancePage.clickDeviceStorage();
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "clickDeviceStorageTest")
+    public void selectDeviceColourTest() throws InterruptedException {
+        webAutomationAdvancePage.clickDeviceColour("blue");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "selectDeviceColourTest")
+    public void selectDeviceQuantityTest() throws InterruptedException {
+        webAutomationAdvancePage.clickDeviceQuantity("2");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "selectDeviceQuantityTest")
+    public void enterDeviceAddressTest() throws InterruptedException {
+        webAutomationAdvancePage.enterDeliveryAddress("27 Henry Dyter");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterDeviceAddressTest")
+    public void clickNextButtonTest() {
+        webAutomationAdvancePage.clickNextButtonSubmitForm();
+    }
+
     @AfterTest
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.quit();
     }
 
