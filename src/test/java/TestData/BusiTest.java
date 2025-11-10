@@ -1,5 +1,6 @@
 package TestData;
 
+import Pages.ConfirmationPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -22,7 +23,7 @@ public class BusiTest extends Base {
     }
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
-    public void enterLoginEmail() throws InterruptedException{
+    public void enterLoginEmail() throws InterruptedException {
         loginPage.enterLoginEmail("Busi27@gmail.com");
         Thread.sleep(4000);
     }
@@ -34,7 +35,7 @@ public class BusiTest extends Base {
     }*/
 
     @Test(dependsOnMethods = "enterLoginEmail")
-    public void enterPasswordTests() throws InterruptedException{
+    public void enterPasswordTests() throws InterruptedException {
         loginPage.enterPasswordId("Busi271302");
         Thread.sleep(4000);
     }
@@ -99,6 +100,41 @@ public class BusiTest extends Base {
     @Test(dependsOnMethods = "enterDeviceAddressTest")
     public void clickNextButtonTest() {
         webAutomationAdvancePage.clickNextButtonSubmitForm();
+    }
+
+    @Test(dependsOnMethods = "clickNextButtonTest")
+    public void clickPreviewTitleTests() {
+        confirmationPage.verifyPreviewHeading();
+    }
+
+    @Test(dependsOnMethods = "clickPreviewTitleTests")
+    public void clickDeviceShippingMethodTest() throws InterruptedException {
+        confirmationPage.selectShippingMethod("Express(+R25)");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "clickPreviewTitleTests")
+    public void clickDeviceWarrantyTest() throws InterruptedException {
+        confirmationPage.selectWarranty("2 year (+R89)");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "clickDeviceWarrantyTest")
+    public void enterDiscountTest() throws InterruptedException {
+        confirmationPage.enterDiscount("SAVE10");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterDiscountTest")
+    public void clickApplyButtonTest() throws InterruptedException {
+        confirmationPage.clickApplyButton();
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "clickApplyButtonTest")
+    public void clickAddToCardButtonTest() throws InterruptedException {
+        confirmationPage.clickAddToCardButton();
+        Thread.sleep(4000);
     }
 
     @AfterTest
