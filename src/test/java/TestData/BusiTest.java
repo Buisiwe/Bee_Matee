@@ -22,13 +22,21 @@ public class BusiTest extends Base {
     }
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
-    public void enterLoginEmail() {
+    public void enterLoginEmail() throws InterruptedException{
         loginPage.enterLoginEmail("Busi27@gmail.com");
+        Thread.sleep(4000);
     }
 
+    //@Test(dependsOnMethods = "clickLearningMaterialTests")
+    /*public void enterLoginInvalidEmail() throws InterruptedException{
+        loginPage.enterLoginInvalidEmail("Busi27@gmail.comm");
+        Thread.sleep(2000);
+    }*/
+
     @Test(dependsOnMethods = "enterLoginEmail")
-    public void enterPasswordTests() {
+    public void enterPasswordTests() throws InterruptedException{
         loginPage.enterPasswordId("Busi271302");
+        Thread.sleep(4000);
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
