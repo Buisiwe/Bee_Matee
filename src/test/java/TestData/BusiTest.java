@@ -134,7 +134,7 @@ public class BusiTest extends Base {
     @Test(dependsOnMethods = "clickApplyButtonTest")
     public void clickAddToCardButtonTest() throws InterruptedException {
         confirmationPage.clickAddToCardButton();
-        Thread.sleep(4000);
+        Thread.sleep(7000);
     }
 
     @AfterTest
