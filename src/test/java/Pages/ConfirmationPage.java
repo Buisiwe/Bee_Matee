@@ -87,9 +87,20 @@ public class ConfirmationPage {
 
     public void clickAddToCardButton() throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);", addToCard_id);
+
+        // Scroll the Add to Cart button into view
+        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCard_id);
+
+        // Click the button
         addToCard_id.click();
-        Thread.sleep(4000);
+
+        // Wait briefly for any animations or updates
+        Thread.sleep(2000);
+
+        // Scroll down a bit after the click (adjust pixels as needed)
+        js.executeScript("window.scrollBy(0, 500);"); // scrolls down 500px
+
+        Thread.sleep(2000);
     }
 
 }
