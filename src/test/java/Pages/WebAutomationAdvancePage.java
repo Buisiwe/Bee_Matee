@@ -64,11 +64,6 @@ public class WebAutomationAdvancePage {
 
     public void clickDeviceQuantity(int deviceQuantity)  throws InterruptedException{
         deviceQuantity_id.clear();
-
-       /* if (deviceQuantity <= 10) {
-            String num = String.valueOf(deviceQuantity);
-            deviceQuantity_id.sendKeys(num);
-        }*/
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", deviceQuantity_id);
         Thread.sleep(4000);
