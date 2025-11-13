@@ -32,6 +32,8 @@ public class ConfirmationPage {
     @FindBy(id = "add-to-cart-btn")
     WebElement addToCard_id;
 
+
+
     public ConfirmationPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -90,6 +92,9 @@ public class ConfirmationPage {
         js.executeScript("arguments[0].scrollIntoView(true);", addToCard_id);
         addToCard_id.click();
         Thread.sleep(4000);
+        js.executeScript("window.scrollBy(0, 500);");
     }
+
+
 
 }

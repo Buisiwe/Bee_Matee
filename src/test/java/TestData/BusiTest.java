@@ -28,12 +28,6 @@ public class BusiTest extends Base {
         Thread.sleep(4000);
     }
 
-    //@Test(dependsOnMethods = "clickLearningMaterialTests")
-    /*public void enterLoginInvalidEmail() throws InterruptedException{
-        loginPage.enterLoginInvalidEmail("Busi27@gmail.comm");
-        Thread.sleep(2000);
-    }*/
-
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() throws InterruptedException {
         loginPage.enterPasswordId("Busi271302");
@@ -136,6 +130,13 @@ public class BusiTest extends Base {
         confirmationPage.clickAddToCardButton();
         Thread.sleep(4000);
     }
+
+    @Test(dependsOnMethods = "clickAddToCardButtonTest")
+    public void clickReviewCardButtonTest() throws InterruptedException {
+        reviewCartOrderPage.reviewCartButton(2);
+        Thread.sleep(4000);
+    }
+
 
     @AfterTest
     public void closeBrowser() {

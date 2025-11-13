@@ -10,8 +10,10 @@ public class Base {
 
     final WebDriver driver = browserFactory.startBrowser("chrome", "https://www.ndosiautomation.co.za/");
     HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-    LoginPage loginPage= PageFactory.initElements(driver, LoginPage.class);
+    LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
     LearningMaterialPage learningMaterialPage = PageFactory.initElements(driver, LearningMaterialPage.class);
     WebAutomationAdvancePage webAutomationAdvancePage = PageFactory.initElements(driver, WebAutomationAdvancePage.class);
     ConfirmationPage confirmationPage = PageFactory.initElements(driver, ConfirmationPage.class);
+    ReviewCartOrderPage reviewCartOrderPage = PageFactory.initElements(driver, ReviewCartOrderPage.class);
 }
+
