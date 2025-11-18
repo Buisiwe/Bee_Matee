@@ -1,12 +1,14 @@
 package Pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.time.Instant;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
@@ -29,7 +31,6 @@ public class ConfirmationPage {
 
     @FindBy(id = "add-to-cart-btn")
     WebElement addToCard_id;
-
 
     public ConfirmationPage(WebDriver driver) {
         this.driver = driver;
@@ -63,55 +64,33 @@ public class ConfirmationPage {
 
         // Log the discount value for tracking
         System.out.println("✅ Entered discount code: " + deviceDiscount);
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        // Check for invalid discount error message
-        try {
-
-            WebElement errorMsg = wait.until(
-                    ExpectedConditions.visibilityOfElementLocated(By.id("discount-error-msg"))
-            );
-
-            String errorText = errorMsg.getText();
-            System.out.println("❌ Invalid discount code message displayed: " + errorText);
-
-            // Optional: assert the error text for tests
-            if (!errorText.contains("Invalid") && !errorText.contains("not valid")) {
-                System.out.println("⚠ Unexpected error message: " + errorText);
-            }
-
-        } catch (TimeoutException e) {
-            System.out.println("✔ No error message shown. Discount may be valid.");
-        }
-
     }
 
-    public void clickApplyButton() {
-        WebElement applyButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(By.id("apply-discount-btn")));
+   public void clickApplyButton() {
+       WebElement applyButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+               .until(ExpectedConditions.elementToBeClickable(By.id("apply-discount-btn")));
 
-        // Scroll so the button is fully visible
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", applyButton);
+       // Scroll so the button is fully visible
+       ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", applyButton);
 
-        // Small pause to allow any repositioning
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+       // Small pause to allow any animation or repositioning
+       try {
+           Thread.sleep(500);
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
 
-        applyButton.click();
-        // Click the Apply button
-        applyButton_id.click();
+       applyButton.click();
+       // Click the Apply button
+       applyButton_id.click();
     }
 
-    public void clickAddToCardButton() throws InterruptedException {
+    public void clickAddToCardButton() throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", addToCard_id);
         addToCard_id.click();
         Thread.sleep(4000);
         js.executeScript("window.scrollBy(0, 500);");
     }
-
 
 }
