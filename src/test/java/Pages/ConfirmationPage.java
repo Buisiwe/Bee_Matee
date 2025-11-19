@@ -32,7 +32,26 @@ public class ConfirmationPage {
     @FindBy(id = "add-to-cart-btn")
     WebElement addToCard_id;
 
+    @FindBy(id = "deviceType")
+    WebElement deviceTypeDropDown_id;
 
+    @FindBy(id = "brand")
+    WebElement tabletBrand_id;
+
+    @FindBy(id = "storage-64GB")
+    WebElement deviceStorage_id;
+
+    @FindBy(id = "color")
+    WebElement deviceColour_id;
+
+    @FindBy(id = "quantity")
+    WebElement deviceQuantity_id;
+
+    @FindBy(id = "address")
+    WebElement deliveryAddress_id;
+
+    @FindBy(id = "inventory-next-btn")
+    WebElement nextButton_id;
 
     public ConfirmationPage(WebDriver driver) {
         this.driver = driver;
@@ -44,11 +63,11 @@ public class ConfirmationPage {
     }
 
     public void selectShippingMethod(String deviceMethod) {
-        shippingMethod_id.click();
+        shippingMethod_id.click();System.out.println(deviceMethod);
     }
 
     public void selectWarranty(String deviceWarranty) {
-        warranty_id.sendKeys(deviceWarranty);
+        warranty_id.sendKeys(deviceWarranty);System.out.println(deviceWarranty);
     }
 
     public void enterDiscount(String deviceDiscount) {
@@ -86,6 +105,44 @@ public class ConfirmationPage {
        // Click the Apply button
        applyButton_id.click();
     }
+
+    public void selectDeviceTypeTwo(String deviceType) {
+        deviceTypeDropDown_id.sendKeys(deviceType)
+        ;
+    }
+
+    public void selectTabletBrandTwo(String deviceBrand) {
+        tabletBrand_id.sendKeys(deviceBrand); System.out.println(deviceBrand);
+    }
+
+    public void clickDeviceStorageTwo() {
+        deviceStorage_id.click();System.out.println(deviceStorage_id);
+    }
+
+    public void clickDeviceColourTwo(String deviceColour) {
+        deviceColour_id.sendKeys(deviceColour); System.out.println(deviceColour);
+    }
+
+    public void clickDeviceQuantityTwo(int deviceQuantity)  throws InterruptedException{
+        deviceQuantity_id.clear();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", deviceQuantity_id);
+        Thread.sleep(4000);
+        if (deviceQuantity > 0 && deviceQuantity <= 10) {
+            String num = String.valueOf(deviceQuantity);
+            deviceQuantity_id.sendKeys(num);
+        }
+        System.out.println(deviceQuantity);
+    }
+
+    public void enterDeliveryAddressTwo(String deviceAddress) {
+        deliveryAddress_id.sendKeys(deviceAddress); System.out.println(deviceAddress);
+    }
+
+    public void clickNextButtonSubmitFormTwo() {
+        nextButton_id.click();
+    }
+
 
     public void clickAddToCardButton() throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;

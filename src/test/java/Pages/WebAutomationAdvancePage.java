@@ -47,19 +47,20 @@ public class WebAutomationAdvancePage {
     }
 
     public void selectDeviceType(String deviceType) {
-        deviceTypeDropDown_id.sendKeys(deviceType);
+        deviceTypeDropDown_id.sendKeys(deviceType)
+        ;
     }
 
     public void selectTabletBrand(String deviceBrand) {
-        tabletBrand_id.sendKeys(deviceBrand);
+        tabletBrand_id.sendKeys(deviceBrand); System.out.println(deviceBrand);
     }
 
     public void clickDeviceStorage() {
-        deviceStorage_id.click();
+        deviceStorage_id.click();System.out.println(deviceStorage_id);
     }
 
     public void clickDeviceColour(String deviceColour) {
-        deviceColour_id.sendKeys(deviceColour);
+        deviceColour_id.sendKeys(deviceColour); System.out.println(deviceColour);
     }
 
     public void clickDeviceQuantity(int deviceQuantity)  throws InterruptedException{
@@ -71,10 +72,11 @@ public class WebAutomationAdvancePage {
             String num = String.valueOf(deviceQuantity);
             deviceQuantity_id.sendKeys(num);
         }
+        System.out.println(deviceQuantity);
     }
 
     public void enterDeliveryAddress(String deviceAddress) {
-        deliveryAddress_id.sendKeys(deviceAddress);
+        deliveryAddress_id.sendKeys(deviceAddress); System.out.println(deviceAddress);
     }
 
     public void clickNextButtonSubmitForm() {

@@ -1,6 +1,7 @@
 package TestData;
 
 import Pages.ConfirmationPage;
+import Pages.WebAutomationAdvancePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -132,6 +133,48 @@ public class BusiTest extends Base {
     }
 
     @Test(dependsOnMethods = "clickAddToCardButtonTest")
+    public void selectDeviceTypeTestTwo() throws InterruptedException {
+        confirmationPage.selectDeviceTypeTwo("Laptop");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "selectDeviceTypeTestTwo")
+    public void selectDeviceBrandTestTwo() throws InterruptedException {
+        confirmationPage.selectTabletBrandTwo("Macbook pro");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "selectDeviceBrandTestTwo")
+    public void clickDeviceStorageTestTwo() throws InterruptedException {
+        confirmationPage.clickDeviceStorageTwo();
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "clickDeviceStorageTestTwo")
+    public void selectDeviceColourTestTwo() throws InterruptedException {
+        confirmationPage.clickDeviceColourTwo("white");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "selectDeviceColourTestTwo")
+    public void selectDeviceQuantityTestTwo() throws InterruptedException {
+        confirmationPage.clickDeviceQuantityTwo(1);
+
+    }
+
+    @Test(dependsOnMethods = "selectDeviceQuantityTestTwo")
+    public void enterDeviceAddressTestTwo() throws InterruptedException {
+        confirmationPage.enterDeliveryAddressTwo("27 Henry Dyter");
+        Thread.sleep(4000);
+    }
+
+
+    @Test(dependsOnMethods = "enterDeviceAddressTest")
+    public void clickNextButtonTestTwo() {
+        confirmationPage.clickNextButtonSubmitFormTwo();
+    }
+
+    @Test(dependsOnMethods = "enterDeviceAddressTestTwo")
     public void clickReviewCardButtonTest() throws InterruptedException {
         reviewCartOrderPage.reviewCartButton(2);
         Thread.sleep(4000);
