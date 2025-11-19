@@ -58,19 +58,13 @@ public class LoginPage {
         }
     }
 
-
-    //public void enterLoginInvalidEmail(String email) {
-    // Wait for the email field to be visible
-    //}
-
-
     public boolean isValidPassword(String password) {
         if (password == null || password.trim().isEmpty()) {
             return false;
         }
 
-        // Basic regex pattern for standard email formats
-        String passwordRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        // Basic regex pattern for standard password formats
+        String passwordRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]";
 
         return password.matches(passwordRegex);
     }
@@ -88,9 +82,9 @@ public class LoginPage {
 
         // Validate email format after entering
         if (!isValidPassword(password)) {
-            System.out.println("❌ Invalid password format entered: " + password);
-        } else {
             System.out.println("✅ Valid password entered: " + password);
+        } else {
+            System.out.println("❌ Invalid password format entered: " + password);
         }
     }
 
