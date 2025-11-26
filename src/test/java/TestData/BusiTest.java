@@ -14,16 +14,68 @@ import org.testng.annotations.Test;
 
 public class BusiTest extends Base {
     @Test
-    public void verifyHomePageIsDisplayedTests() {
+    public void verifyHomePageIsDisplayedTests() throws InterruptedException{
         homePage.VerifyHomePageDisplay();
+        Thread.sleep(4000);
     }
 
     @Test(dependsOnMethods = "verifyHomePageIsDisplayedTests")
-    public void clickLearningMaterialTests() {
+    public void clickLearningMaterialTests() throws InterruptedException{
         homePage.learningMaterial();
+        Thread.sleep(4000);
     }
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
+    public void clickLearningMaterialTests1() throws InterruptedException{
+        signUpPage.learningMaterial();
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "clickLearningMaterialTests1")
+    public void enterFirstNameTest() throws InterruptedException {
+        signUpPage.enterFirstName("Buyisi");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterFirstNameTest")
+    public void enterLastNameTest() throws InterruptedException {
+        signUpPage.enterLastName("Matee");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterLastNameTest")
+    public void enterRegisterEmailTest() throws InterruptedException {
+        signUpPage.enterRegisterEmail("buyisimatee@yahoo.co.za");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterRegisterEmailTest")
+    public void enterRegisterPasswordTest() throws InterruptedException {
+        signUpPage.enterRegisterPassword("BusiMatee2018");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterRegisterPasswordTest")
+    public void enterRegisterConfirmPasswordTest() throws InterruptedException {
+        signUpPage.enterConfirmPassword("BusiMatee2018");
+        Thread.sleep(4000);
+    }
+
+    @Test(dependsOnMethods = "enterRegisterConfirmPasswordTest")
+    public void clickCreateAccountButtonTest() throws InterruptedException {
+        signUpPage.clickCreateAccountButton();
+        signUpPage.goToLoginPage();
+        Thread.sleep(4000);
+    }
+    /*@Test(dependsOnMethods = "clickCreateAccountButtonTest")
+    public void goToLoginPageTest() throws InterruptedException {
+        loginPage.verifyLoginPageLoaded();
+        Thread.sleep(4000);
+    }*/
+
+    // ---------------- LOGIN FLOW ----------------
+
+    @Test(dependsOnMethods = "clickCreateAccountButtonTest")
     public void enterLoginEmail() throws InterruptedException {
         loginPage.enterLoginEmail("Busi27@gmail.com");
         Thread.sleep(4000);
@@ -56,6 +108,9 @@ public class BusiTest extends Base {
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
     }
 
+
+    // ---------------- PRODUCT SELECTION #1 ----------------
+
     @Test(dependsOnMethods = "verifyWebAutomationAdvancePageIsDisplayedTest")
     public void selectDeviceTypeTest() throws InterruptedException {
         webAutomationAdvancePage.selectDeviceType("Tablet");
@@ -83,7 +138,6 @@ public class BusiTest extends Base {
     @Test(dependsOnMethods = "selectDeviceColourTest")
     public void selectDeviceQuantityTest() throws InterruptedException {
         webAutomationAdvancePage.clickDeviceQuantity(2);
-
     }
 
     @Test(dependsOnMethods = "selectDeviceQuantityTest")
@@ -108,7 +162,7 @@ public class BusiTest extends Base {
         Thread.sleep(4000);
     }
 
-    @Test(dependsOnMethods = "clickPreviewTitleTests")
+    @Test(dependsOnMethods = "clickDeviceShippingMethodTest")
     public void clickDeviceWarrantyTest() throws InterruptedException {
         confirmationPage.selectWarranty("2 year (+R89)");
         Thread.sleep(4000);
@@ -131,6 +185,9 @@ public class BusiTest extends Base {
         confirmationPage.clickAddToCardButton();
         Thread.sleep(4000);
     }
+
+
+    // ---------------- PRODUCT SELECTION #2 ----------------
 
     @Test(dependsOnMethods = "clickAddToCardButtonTest")
     public void selectDeviceTypeTestTwo() throws InterruptedException {
@@ -159,7 +216,6 @@ public class BusiTest extends Base {
     @Test(dependsOnMethods = "selectDeviceColourTestTwo")
     public void selectDeviceQuantityTestTwo() throws InterruptedException {
         confirmationPage.clickDeviceQuantityTwo(1);
-
     }
 
     @Test(dependsOnMethods = "selectDeviceQuantityTestTwo")
@@ -168,13 +224,12 @@ public class BusiTest extends Base {
         Thread.sleep(4000);
     }
 
-
-    @Test(dependsOnMethods = "enterDeviceAddressTest")
+    @Test(dependsOnMethods = "enterDeviceAddressTestTwo")
     public void clickNextButtonTestTwo() {
         confirmationPage.clickNextButtonSubmitFormTwo();
     }
 
-    @Test(dependsOnMethods = "enterDeviceAddressTestTwo")
+    @Test(dependsOnMethods = "clickNextButtonTestTwo")
     public void clickReviewCardButtonTest() throws InterruptedException {
         reviewCartOrderPage.reviewCartButton(2);
         Thread.sleep(4000);
@@ -185,5 +240,4 @@ public class BusiTest extends Base {
     public void closeBrowser() {
         driver.quit();
     }
-
 }

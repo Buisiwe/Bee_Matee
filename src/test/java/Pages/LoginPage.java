@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class LoginPage {
     WebDriver driver;
+    @FindBy(id = "login-toggle")WebElement loginToggle1_id;
     @FindBy(id = "login-email")
     WebElement loginEmail_id;
     @FindBy(id = "login-password")
@@ -26,6 +28,10 @@ public class LoginPage {
         this.driver = driver;
     }
 
+    /*public void verifyLoginPageLoaded() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginToggle1_id));
+        loginToggle1_id.isDisplayed();
+    }*/
 
     public boolean isValidEmail(String email) {
         if (email == null || email.trim().isEmpty()) {
